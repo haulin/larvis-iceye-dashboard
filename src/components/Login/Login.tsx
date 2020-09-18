@@ -1,5 +1,8 @@
 import React from "react";
-import { Form, Input, Button } from "antd";
+
+import { Button, Form, Input, Space, Typography } from "antd";
+
+import "./Login.less";
 
 const layout = {
   labelCol: { span: 8 },
@@ -19,34 +22,37 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <Form
-      {...layout}
-      name="basic"
-      initialValues={{ user_id: "alice" }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-    >
-      <Form.Item
-        label="User ID"
-        name="user_id"
-        rules={[{ required: true, message: "Please input your user ID!" }]}
+    <Space className="login" direction="vertical">
+      <Typography.Title level={2} type="secondary">
+        Please login for access
+      </Typography.Title>
+      <Form
+        {...layout}
+        name="basic"
+        initialValues={{ user_id: "alice" }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
       >
-        <Input />
-      </Form.Item>
+        <Form.Item
+          label="User ID"
+          name="user_id"
+          rules={[{ required: true, message: "Please input your user ID!" }]}
+        >
+          <Input />
+        </Form.Item>
 
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[{ required: true, message: "Please input your password!" }]}
-      >
-        <Input.Password />
-      </Form.Item>
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[{ required: true, message: "Please input your password!" }]}
+        >
+          <Input.Password />
+        </Form.Item>
 
-      <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
-          Login
-        </Button>
-      </Form.Item>
-    </Form>
+        <Form.Item {...tailLayout}>
+          <Button htmlType="submit">Login</Button>
+        </Form.Item>
+      </Form>
+    </Space>
   );
 };
