@@ -1,20 +1,24 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Typography } from "antd";
-
-import { Login } from "components";
+import { Home, Login, PrivateRoute } from "components";
+import { AuthProvider } from "utils";
 
 import "./Dashboard.less";
 
 export const Dashboard: React.FC = () => {
   return (
-    <div className="dashboard">
-      <header className="dashboard--header">
-        <Typography.Title>Monthly Ore Deposits</Typography.Title>
-      </header>
-      <main className="dashboard--login">
-        <Login />
-      </main>
-    </div>
+    <AuthProvider>
+      <Router>
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <PrivateRoute path="/">
+            <Home />
+          </PrivateRoute>
+        </Switch>
+      </Router>
+    </AuthProvider>
   );
 };

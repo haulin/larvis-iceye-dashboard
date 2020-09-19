@@ -21,9 +21,25 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+## Technical stack
+
+- Ant Design - component library
+- CRACo - CRA configuration
+- Create React App
+- LESS stylesheets - why not, Ant uses them
+- Prettier - autoformatting code
+- React Router
+- React Testing Library - functional testing over unit tests
+- TypeScript - autocompletion of object keys is tight
+
 ## Philosophy
 
-Using Ant Design, React, React Testing Library, TypeScript as a basis for current best practices.
-Prettier helps format the code automatically.
+Using CRA to delegate the responsibility of configuring webpack, babel and the like to the open source community. CRACo still allows us to make modifications if we need to (e.g. modifying Ant theme).
 
-Every export should be named properly, not using default exports. Similar modules should be imported from a single location, e.g. `import { Login } from 'src/components` rather than a specific file.
+Every export should be named properly, not using default exports. Similar modules should be imported from a single location, e.g. `import { Login } from 'components` rather than a specific file. Using submodules is encouraged, e.g. React.FC rather than importing FC directly. You don't want to have first 50 lines of the file consisting of imports.
+
+Using LESS stylesheets since it doesn't lock us in a particular framework like Emotion for example. Using BEM naming convention which is ideal for styling isolated components.
+
+Routing is done using React Router. We implemented our own PrivateRoute component that makes sure unauthenticated user is redirected to the login page.
+
+Sort your imports, style rules, and object keys alphabetically where possible. No other ordering makes sense, sorry. ES imports are sorted in the following order - 3rd parties, 1st parties, relative paths.
