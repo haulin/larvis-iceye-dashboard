@@ -58,8 +58,8 @@ export const Login: React.FC = () => {
           </Typography.Title>
           <Form
             {...layout}
+            initialValues={{ password: "", user_id: "alice" }}
             name="basic"
-            initialValues={{ user_id: "alice" }}
             onFinish={onFinish}
           >
             <Form.Item

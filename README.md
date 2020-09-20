@@ -40,6 +40,8 @@ Routing is done using React Router. We implemented our own PrivateRoute componen
 
 Using LESS stylesheets since it doesn't lock us in a particular framework like Emotion for example. Using BEM naming convention which is ideal for styling isolated components.
 
+In React prefer functional components and hooks where possible. It's more close to the metal, no magic.
+
 Every export should be named properly, not using default exports. Similar modules should be imported from a single location, e.g. `import { Login } from 'components` rather than a specific file. Using submodules is encouraged, e.g. React.FC rather than importing FC directly. You don't want to have first 50 lines of the file consisting of imports.
 
 Sort your imports, style rules, and object keys alphabetically where possible. No other ordering makes sense, sorry. ES imports are sorted in the following order - 3rd parties, 1st parties, relative paths.
