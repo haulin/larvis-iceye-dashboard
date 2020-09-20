@@ -4,8 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Home, Login, PrivateRoute } from "components";
 import { AuthProvider } from "utils";
 
-import "./Dashboard.less";
-
 export const Dashboard: React.FC = () => {
   return (
     <AuthProvider>

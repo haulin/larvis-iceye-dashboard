@@ -32,14 +32,14 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 - React Testing Library - functional testing over unit tests
 - TypeScript - autocompletion of object keys is tight
 
-## Philosophy
+## Conventions
 
 Using CRA to delegate the responsibility of configuring webpack, babel and the like to the open source community. CRACo still allows us to make modifications if we need to (e.g. modifying Ant theme).
 
-Every export should be named properly, not using default exports. Similar modules should be imported from a single location, e.g. `import { Login } from 'components` rather than a specific file. Using submodules is encouraged, e.g. React.FC rather than importing FC directly. You don't want to have first 50 lines of the file consisting of imports.
+Routing is done using React Router. We implemented our own PrivateRoute component that makes sure unauthenticated user is redirected to the login page.
 
 Using LESS stylesheets since it doesn't lock us in a particular framework like Emotion for example. Using BEM naming convention which is ideal for styling isolated components.
 
-Routing is done using React Router. We implemented our own PrivateRoute component that makes sure unauthenticated user is redirected to the login page.
+Every export should be named properly, not using default exports. Similar modules should be imported from a single location, e.g. `import { Login } from 'components` rather than a specific file. Using submodules is encouraged, e.g. React.FC rather than importing FC directly. You don't want to have first 50 lines of the file consisting of imports.
 
 Sort your imports, style rules, and object keys alphabetically where possible. No other ordering makes sense, sorry. ES imports are sorted in the following order - 3rd parties, 1st parties, relative paths.

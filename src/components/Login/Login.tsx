@@ -1,8 +1,8 @@
 import React from "react";
-import { Button, Form, Input, Space, Typography } from "antd";
+import { Button, Form, Input, Space, Typography, notification } from "antd";
 import { Redirect } from "react-router-dom";
 
-import { AuthContext } from "utils";
+import { AuthContext, token } from "utils";
 
 import "./Login.less";
 
@@ -22,12 +22,24 @@ const tailLayout = {
 export const Login: React.FC = () => {
   const { state, dispatch } = React.useContext(AuthContext);
 
-  const onFinish = (payload: LoginPayload) => {
-    dispatch({ type: "LOGIN", payload });
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+  const onFinish = async (payload: LoginPayload) => {
+    try {
+      const response = await token(payload);
+      dispatch({
+        type: "LOGIN",
+        payload: {
+          user_id: payload.user_id,
+          access: response.parsedBody?.access,
+        },
+      });
+    } catch (ex) {
+      if (ex instanceof Error) {
+        notification.open({
+          message: "Login Failed",
+          description: `Error: ${ex.message}`,
+        });
+      }
+    }
   };
 
   if (state.isAuthenticated) {
@@ -49,7 +61,6 @@ export const Login: React.FC = () => {
             name="basic"
             initialValues={{ user_id: "alice" }}
             onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
           >
             <Form.Item
               label="User ID"

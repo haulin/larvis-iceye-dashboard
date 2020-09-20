@@ -21,11 +21,11 @@ export const AuthContext = React.createContext<{
 export const authReducer = (state: any, action: any) => {
   switch (action.type) {
     case "LOGIN":
-      console.log(state);
       return {
         ...state,
         isAuthenticated: true,
         user: action.payload.user,
+        access: action.payload.access,
       };
     case "LOGOUT":
       return {
