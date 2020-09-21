@@ -16,12 +16,13 @@ import "./Home.less"; // LOL, homeless
 
 const getLarvisQuote = (): string => {
   const quotes = [
-    "Can I haz cheeseburger?",
-    "Do you liek the API I made 4 u?",
-    "Here iz ur shiny UI, hoo-man!",
+    "All ur ore r belong to us",
+    "Can I haz cheezburger?",
+    "Do you liek teh API I made 4 u?",
+    "Ur UI looks purrfect, hoo-man!",
     "If I fits, I deposits.",
     "Im in ur orbit, mappin ur soil...",
-    "You've gotta be kitten me!",
+    "U gotta b kitten me!!1",
   ];
   return quotes[Math.floor(Math.random() * quotes.length)];
 };
@@ -54,7 +55,7 @@ export const Home: React.FC = () => {
             Acquisitions
           </Menu.Item>
           <Menu.Item key="3" icon={<TeamOutlined />}>
-            Users
+            Hoo-mans
           </Menu.Item>
           <Menu.Item key="4" icon={<RobotOutlined />}>
             LARVIS status
@@ -67,7 +68,7 @@ export const Home: React.FC = () => {
               <span>{state.user_id}</span>
             </Space>
             <Button icon={<PoweroffOutlined />} onClick={logout}>
-              Logout
+              Whisker away
             </Button>
           </Space>
         </div>

@@ -28,6 +28,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 - Create React App
 - LESS stylesheets - why not, Ant uses them
 - Prettier - autoformatting code
+- React hooks - useContext, useReducer
 - React Router
 - React Testing Library - functional testing over unit tests
 - TypeScript - autocompletion of object keys is tight
