@@ -28,7 +28,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 - Create React App
 - LESS stylesheets - why not, Ant uses them
 - Prettier - autoformatting code
-- React hooks - useContext, useReducer
+- React contexts & hooks
 - React Router
 - React Testing Library - functional testing over unit tests
 - TypeScript - autocompletion of object keys is tight
@@ -39,7 +39,7 @@ Using CRA to delegate the responsibility of configuring webpack, babel and the l
 
 Routing is done using React Router. We implemented our own PrivateRoute component that makes sure unauthenticated user is redirected to the login page.
 
-Using LESS stylesheets since it doesn't lock us in a particular framework like Emotion for example. Using BEM naming convention which is ideal for styling isolated components.
+Using LESS stylesheets since it doesn't lock us in a particular framework like Emotion for example. Using BEM naming convention which is ideal for styling isolated components. Mobile first approach to responsiveness.
 
 In React prefer functional components and hooks where possible. It's more close to the metal, no magic.
 

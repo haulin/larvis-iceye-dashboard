@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import { Avatar, Button, Layout, Menu, Space } from "antd";
 import {
   BarChartOutlined,
@@ -17,9 +18,15 @@ import "./Sider.less";
 export const Sider: React.FC = () => {
   const { state, dispatch } = React.useContext(AuthContext);
   const [isFixed, setFixed] = React.useState(false);
+  const history = useHistory();
+  const location = useLocation();
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
+  };
+
+  const handleMenuClick = ({ key }) => {
+    history.push(key);
   };
 
   return (
@@ -45,9 +52,9 @@ export const Sider: React.FC = () => {
       </div>
       <Menu
         theme="dark"
-        defaultSelectedKeys={["/"]}
+        defaultSelectedKeys={[location.pathname]}
         mode="inline"
-        onClick={(props) => console.log(props)}
+        onClick={handleMenuClick}
       >
         <Menu.Item key="/" icon={<HomeOutlined />}>
           Dashboard

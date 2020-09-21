@@ -6,6 +6,10 @@ import { AuthContext, token } from "utils";
 
 import "./Login.less";
 
+interface LoginProps {
+  location: Location;
+}
+
 interface LoginPayload {
   password: string;
   user_id: string;
@@ -19,7 +23,7 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
 
-export const Login: React.FC = () => {
+export const Login: React.FC<LoginProps> = ({ location }) => {
   const { state, dispatch } = React.useContext(AuthContext);
 
   const onFinish = async (payload: LoginPayload) => {
@@ -43,7 +47,8 @@ export const Login: React.FC = () => {
   };
 
   if (state.isAuthenticated) {
-    return <Redirect to="/" />;
+    const redirect = new URLSearchParams(location.search).get("redirect");
+    return <Redirect to={redirect ?? "/"} />;
   }
 
   return (

@@ -5,6 +5,11 @@ import { AuthContext } from "utils";
 
 export const PrivateRoute = ({ children, ...rest }) => {
   const { state } = React.useContext(AuthContext);
+
+  const getQuery = (location) => {
+    return `?redirect=${location.pathname}`;
+  };
+
   return (
     <Route
       {...rest}
@@ -15,6 +20,7 @@ export const PrivateRoute = ({ children, ...rest }) => {
           <Redirect
             to={{
               pathname: "/login",
+              search: getQuery(location),
               state: { from: location },
             }}
           />
