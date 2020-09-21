@@ -1,13 +1,17 @@
 import React from "react";
+import { getCurrentUser, removeCurrentUser, setCurrentUser } from "utils";
 
 interface InitialState {
   isAuthenticated: boolean;
   user_id: string;
 }
 
+const { access, user_id } = getCurrentUser();
+
 const initialState = {
-  isAuthenticated: false,
-  user_id: "",
+  access,
+  isAuthenticated: Boolean(user_id),
+  user_id,
 };
 
 export const AuthContext = React.createContext<{
@@ -21,13 +25,18 @@ export const AuthContext = React.createContext<{
 export const authReducer = (state: any, action: any) => {
   switch (action.type) {
     case "LOGIN":
-      return {
-        ...state,
+      const currentUser = {
         access: action.payload.access,
-        isAuthenticated: true,
         user_id: action.payload.user_id,
       };
+      setCurrentUser(currentUser);
+      return {
+        ...state,
+        isAuthenticated: true,
+        ...currentUser,
+      };
     case "LOGOUT":
+      removeCurrentUser();
       return {
         ...state,
         isAuthenticated: false,

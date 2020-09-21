@@ -70,12 +70,12 @@ export const Sider: React.FC = () => {
         </Menu.Item>
       </Menu>
       <div className="sider__user">
-        <Space direction="vertical" size="large">
+        <Space className="sider__user-space" direction="vertical" size="large">
           <Space>
             <Avatar size="large" icon={<UserOutlined />} />
             <span>{state.user_id}</span>
           </Space>
-          <Button icon={<PoweroffOutlined />} onClick={logout}>
+          <Button block icon={<PoweroffOutlined />} onClick={logout}>
             Whisker away
           </Button>
         </Space>

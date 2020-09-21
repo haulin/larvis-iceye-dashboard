@@ -1,3 +1,5 @@
+import { getCurrentUser } from "utils";
+
 const baseUrl = "http://localhost:8000";
 
 interface HttpResponse<T> extends Response {
@@ -31,7 +33,7 @@ const http = async <T>(request: RequestInfo): Promise<HttpResponse<T>> => {
   return response;
 };
 
-let access: string | undefined = "";
+let { access } = getCurrentUser();
 
 export const token = async ({
   user_id,
@@ -46,7 +48,7 @@ export const token = async ({
       }),
     })
   );
-  access = response?.parsedBody?.access;
+  access = response?.parsedBody?.access || "";
   return response;
 };
 

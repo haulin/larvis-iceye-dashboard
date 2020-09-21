@@ -1,5 +1,6 @@
 import React from "react";
-import { Table, Typography } from "antd";
+import { Space, Table, Typography } from "antd";
+import { TeamOutlined } from "@ant-design/icons";
 
 import { User, userList } from "utils";
 
@@ -7,14 +8,14 @@ import "./Users.less";
 
 const columns = [
   {
-    title: "User ID",
     dataIndex: "user_id",
     sorter: (a, b) => a.user_id.localeCompare(b.user_id),
+    title: "User ID",
   },
   {
-    title: "Name",
     dataIndex: "name",
     sorter: (a, b) => a.name.localeCompare(b.name),
+    title: "Name",
   },
 ];
 
@@ -31,8 +32,15 @@ export const Users: React.FC = () => {
 
   return (
     <div className="users">
-      <Typography.Title>User List</Typography.Title>
-      <Table columns={columns} dataSource={users} />
+      <Space>
+        <TeamOutlined className="users__icon" />
+        <Typography.Title>User List</Typography.Title>
+      </Space>
+      <Table
+        columns={columns}
+        dataSource={users}
+        rowKey={(record) => record.user_id}
+      />
     </div>
   );
 };
