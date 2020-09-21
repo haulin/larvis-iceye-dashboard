@@ -13,6 +13,11 @@ interface TokenResponse extends Response {
   access: string;
 }
 
+export interface User {
+  name: string;
+  user_id: string;
+}
+
 const http = async <T>(request: RequestInfo): Promise<HttpResponse<T>> => {
   const response: HttpResponse<T> = await fetch(request);
 
@@ -26,17 +31,30 @@ const http = async <T>(request: RequestInfo): Promise<HttpResponse<T>> => {
   return response;
 };
 
+let access: string | undefined = "";
+
 export const token = async ({
   user_id,
   password,
 }: TokenPayload): Promise<HttpResponse<TokenResponse>> => {
-  return await http<TokenResponse>(
+  const response = await http<TokenResponse>(
     new Request(`${baseUrl}/token`, {
       method: "POST",
       body: JSON.stringify({
         user_id,
         password,
       }),
+    })
+  );
+  access = response?.parsedBody?.access;
+  return response;
+};
+
+export const userList = async (): Promise<HttpResponse<User[]>> => {
+  return await http<User[]>(
+    new Request(`${baseUrl}/users`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${access}` },
     })
   );
 };
