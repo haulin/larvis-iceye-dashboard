@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
+  overflow: hidden;
 
   &__content {
     align-items: center;
@@ -15,8 +16,12 @@
 
   &__form {
     background-color: #000c;
-    border-radius: 1em;
-    padding: 2em 4em;
+    padding: 1em;
+
+    @media (min-width: 576px) {
+      border-radius: 1em;
+      padding: 2em 4em;
+    }
   }
 
   &__header {

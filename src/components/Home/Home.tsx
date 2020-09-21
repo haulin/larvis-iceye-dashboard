@@ -1,17 +1,8 @@
 import React from "react";
-import { Avatar, Button, Layout, Menu, Space, Typography } from "antd";
-import {
-  BarChartOutlined,
-  HomeOutlined,
-  PoweroffOutlined,
-  RobotOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { Layout, Typography } from "antd";
 
-import { AuthContext } from "utils";
+import { Sider } from "components";
 
-import logo from "./larvis-logo.png";
 import "./Home.less"; // LOL, homeless
 
 const getLarvisQuote = (): string => {
@@ -28,51 +19,9 @@ const getLarvisQuote = (): string => {
 };
 
 export const Home: React.FC = () => {
-  const { state, dispatch } = React.useContext(AuthContext);
-
-  const logout = () => {
-    dispatch({ type: "LOGOUT" });
-  };
-
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Layout.Sider className="home__sider">
-        <div className="home__link">
-          <Space>
-            <img
-              alt="L.A.R.V.I.S. grumpy cat"
-              className="home__logo"
-              src={logo}
-            />
-            <span>L.A.R.V.I.S.</span>
-          </Space>
-        </div>
-        <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-          <Menu.Item key="1" icon={<HomeOutlined />}>
-            Dashboard
-          </Menu.Item>
-          <Menu.Item key="2" icon={<BarChartOutlined />}>
-            Acquisitions
-          </Menu.Item>
-          <Menu.Item key="3" icon={<TeamOutlined />}>
-            Hoo-mans
-          </Menu.Item>
-          <Menu.Item key="4" icon={<RobotOutlined />}>
-            LARVIS status
-          </Menu.Item>
-        </Menu>
-        <div className="home__user">
-          <Space direction="vertical" size="large">
-            <Space>
-              <Avatar size="large" icon={<UserOutlined />} />
-              <span>{state.user_id}</span>
-            </Space>
-            <Button icon={<PoweroffOutlined />} onClick={logout}>
-              Whisker away
-            </Button>
-          </Space>
-        </div>
-      </Layout.Sider>
+      <Sider />
       <Layout>
         <Layout.Header className="home__header">
           <Typography.Title className="home__title">

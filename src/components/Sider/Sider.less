@@ -1,0 +1,32 @@
+@import "~antd/lib/style/themes/dark.less";
+
+.sider {
+  &--fixed {
+    position: fixed;
+    height: 100vh;
+  }
+
+  & .ant-layout-sider-children {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link {
+    align-items: center;
+    background-color: @divider-color;
+    display: flex;
+    font-weight: bold;
+    height: 64px;
+    justify-content: center;
+  }
+
+  &__logo {
+    height: 64px;
+    width: auto;
+  }
+
+  &__user {
+    margin-top: auto;
+    padding: 16px 16px 16px 24px;
+  }
+}
