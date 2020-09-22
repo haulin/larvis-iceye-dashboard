@@ -1,3 +1,4 @@
+export { Acquisitions } from "./Acquisitions/Acquisitions";
 export { Dashboard } from "./Dashboard/Dashboard";
 export { Header } from "./Header/Header";
 export { Home } from "./Home/Home";

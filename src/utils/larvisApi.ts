@@ -20,6 +20,12 @@ export interface User {
   user_id: string;
 }
 
+export interface Acquisition {
+  date?: string;
+  ore_sites: number;
+  timestamp: number;
+}
+
 const http = async <T>(request: RequestInfo): Promise<HttpResponse<T>> => {
   const response: HttpResponse<T> = await fetch(request);
 
@@ -59,4 +65,16 @@ export const userList = async (): Promise<HttpResponse<User[]>> => {
       headers: { Authorization: `Bearer ${access}` },
     })
   );
+};
+
+export const getAcquisitions = async (): Promise<
+  HttpResponse<Acquisition[]>
+> => {
+  const response = await http<Acquisition[]>(
+    new Request(`${baseUrl}/acquisitions`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${access}` },
+    })
+  );
+  return response;
 };

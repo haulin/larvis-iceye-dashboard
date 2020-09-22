@@ -3,14 +3,22 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
 
 import { AuthProvider } from "utils";
-import { Header, Home, Login, PrivateRoute, Sider, Users } from "components";
+import {
+  Acquisitions,
+  Header,
+  Home,
+  Login,
+  PrivateRoute,
+  Sider,
+  Users,
+} from "components";
 
 export const Dashboard: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
         <Switch>
-          <Route path="/login" component={Login} />
+          <Route component={Login} path="/login" />
           <PrivateRoute path="/">
             <Layout style={{ minHeight: "100vh" }}>
               <Sider />
@@ -20,7 +28,7 @@ export const Dashboard: React.FC = () => {
                   <Route exact path="/">
                     <Home />
                   </Route>
-                  <Route path="/acquisitions">Acquisitions</Route>
+                  <Route component={Acquisitions} path="/acquisitions" />
                   <Route path="/users">
                     <Users />
                   </Route>
