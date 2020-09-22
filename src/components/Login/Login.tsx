@@ -63,7 +63,7 @@ export const Login: React.FC<LoginProps> = ({ location }) => {
           </Typography.Title>
           <Form
             {...layout}
-            initialValues={{ password: "", user_id: "alice" }}
+            initialValues={{ password: "", user_id: "" }}
             name="basic"
             onFinish={onFinish}
           >
