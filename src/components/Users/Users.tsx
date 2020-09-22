@@ -34,7 +34,7 @@ export const Users: React.FC = () => {
     <div className="users">
       <Space>
         <TeamOutlined className="users__icon" />
-        <Typography.Title>User List</Typography.Title>
+        <Typography.Title>User list</Typography.Title>
       </Space>
       <Table
         columns={columns}

@@ -6,10 +6,10 @@ import { AuthProvider } from "utils";
 import {
   Acquisitions,
   Header,
-  Home,
   Login,
   PrivateRoute,
   Sider,
+  Status,
   Users,
 } from "components";
 
@@ -25,14 +25,11 @@ export const Dashboard: React.FC = () => {
               <Layout>
                 <Header />
                 <Layout.Content style={{ margin: "0 16px" }}>
-                  <Route exact path="/">
-                    <Home />
-                  </Route>
-                  <Route component={Acquisitions} path="/acquisitions" />
+                  <Route component={Acquisitions} exact path="/" />
                   <Route path="/users">
                     <Users />
                   </Route>
-                  <Route path="/status">LARVIS status</Route>
+                  <Route component={Status} path="/status" />
                 </Layout.Content>
               </Layout>
             </Layout>

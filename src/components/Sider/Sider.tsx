@@ -3,7 +3,6 @@ import { useHistory, useLocation } from "react-router-dom";
 import { Avatar, Button, Layout, Menu, Space } from "antd";
 import {
   BarChartOutlined,
-  HomeOutlined,
   PoweroffOutlined,
   RobotOutlined,
   TeamOutlined,
@@ -56,10 +55,7 @@ export const Sider: React.FC = () => {
         mode="inline"
         onClick={handleMenuClick}
       >
-        <Menu.Item key="/" icon={<HomeOutlined />}>
-          Dashboard
-        </Menu.Item>
-        <Menu.Item key="/acquisitions" icon={<BarChartOutlined />}>
+        <Menu.Item key="/" icon={<BarChartOutlined />}>
           Acquisitions
         </Menu.Item>
         <Menu.Item key="/users" icon={<TeamOutlined />}>
